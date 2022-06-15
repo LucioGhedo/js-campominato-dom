@@ -107,8 +107,6 @@ function endGame() {
     for(let i = 0; i < gameMaxRange; i++) {
         let allSel = document.querySelectorAll('.square');
         allSel[i].removeEventListener('click', manageSquareClick);
-    }
-    for(let i = 0; i < gameMaxRange; i++) {
         if(bombs.includes(i)) {
             let allSel = document.querySelectorAll('.square');
             allSel[i].classList.add('red');
