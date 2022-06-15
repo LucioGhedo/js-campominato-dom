@@ -1,7 +1,7 @@
 // html elements
 const mainGrid = document.getElementById('main-grid');
 const playButton = document.getElementById('play');
-const clickedNumbers = [];
+let clickedNumbers = [];
 const userMessageDiv = document.querySelector('#user-message');
 
 // array
@@ -11,6 +11,7 @@ let bombs = [];
 playButton.addEventListener('click', 
 function() {
     // reset grigla
+    clickedNumbers = []
     mainGrid.innerHTML = '';
     // difficoltà presa da value
     const userLevel = document.getElementById('user-level').value;
@@ -31,7 +32,6 @@ function() {
         gamesContinue = true;
         createGrid(gameMaxRange, 'crazy');
     }
-    console.log('bombe',bombs)
 }
 )
 
@@ -90,7 +90,6 @@ function manageSquareClick() {
 
     // Pushare il numero nell'array dei numeri selezionati
     clickedNumbers.push(thisNumber);
-    console.log(clickedNumbers);
 
     // Se l'utente ha cliccato su tutti i numeri
     // Scrivo il messaggio di fine gioco
@@ -103,7 +102,6 @@ function manageSquareClick() {
 }
 function endGame() {
     const thisNumber = document.getElementsByClassName('square').innerHTML;
-
     userMessageDiv.innerHTML = `Hai finito il gioco, il punteggio è: ${clickedNumbers.length}`;
     for(let i = 0; i < gameMaxRange; i++) {
         let allSel = document.querySelectorAll('.square');
