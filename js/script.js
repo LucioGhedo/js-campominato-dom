@@ -31,6 +31,7 @@ function() {
         gamesContinue = true;
         createGrid(gameMaxRange, 'crazy');
     }
+    console.log('bombe',bombs)
 }
 )
 
@@ -50,13 +51,13 @@ function generateBombs(numOfElem, rangeMin, rangeMax) {
     return randomNumArray;
 }
 function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min +1) ) + min;
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
 function createGrid(gameMaxRange, userLevel) {
     for(let i = 1; i <= gameMaxRange; i++) {
         // Creare degli square
         // <div class="square"><span>12</span></div>
-        const newSquare = document.createElement('div');
+        const newSquare = document.createElement("div");
         // popolare il numero
         newSquare.innerHTML = `<span>${i}</span>`;
         // Aggiungere la classe square
@@ -93,7 +94,7 @@ function manageSquareClick() {
 
     // Se l'utente ha cliccato su tutti i numeri
     // Scrivo il messaggio di fine gioco
-    if(clickedNumbers.length === gameMaxRange - 16) {
+    if(clickedNumbers.length === gameMaxRange - 15) {
         endGame();
     }
 
@@ -109,7 +110,7 @@ function endGame() {
         allSel[i].removeEventListener('click', manageSquareClick);
         if(bombs.includes(i)) {
             let allSel = document.querySelectorAll('.square');
-            allSel[i].classList.add('red');
+            allSel[i - 1].classList.add('red');
         }
     }
 }
