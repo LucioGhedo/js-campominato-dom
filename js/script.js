@@ -102,7 +102,7 @@ function manageSquareClick() {
 }
 function endGame() {
     const thisNumber = document.getElementsByClassName('square').innerHTML;
-    console.log('thisn',thisNumber)
+
     userMessageDiv.innerHTML = `Hai finito il gioco, il punteggio è: ${clickedNumbers.length}`;
     for(let i = 0; i < gameMaxRange; i++) {
         let allSel = document.querySelectorAll('.square');
