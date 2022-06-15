@@ -1,0 +1,44 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+}
+.square.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: solid black 1px;
+}
+.square.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: solid black 1px;
+}
+.square.crazy {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: solid black 1px;
+}
+main {
+    background-color: aqua;
+}
+#main-grid {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.blue {
+    background-color: blue;
+}
+.red {
+    background-color: red;
+}
