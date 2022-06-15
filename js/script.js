@@ -9,6 +9,8 @@ let bombs = [];
 
 playButton.addEventListener('click', 
 function() {
+    // reset grigla
+    mainGrid.innerHTML = '';
     const userLevel = document.getElementById('user-level').value
     
     if (userLevel === 'easy') {
@@ -74,7 +76,6 @@ function createGrid(gameMaxRange, userLevel) {
             squares.addEventListener('click', manageSquareClick);
         } else if (bombs.includes(manageSquareClick)) {
             alert('hai perso')
-            newSquareF.removeEventListener(manageSquareClick)
         }
     }
     
