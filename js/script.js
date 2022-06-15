@@ -107,5 +107,5 @@ function manageSquareClick() {
     this.style.pointerEvents = 'none';
 }
 function endGame() {
-    userMessageDiv.innerHTML = `Hai finito il gioco, l'ordine dei click è: ${clickedNumbers}`;
+    userMessageDiv.innerHTML = `Hai finito il gioco, il punteggio è: ${clickedNumbers.length}`;
 }
