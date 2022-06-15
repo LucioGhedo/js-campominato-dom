@@ -105,12 +105,13 @@ function endGame() {
     console.log('thisn',thisNumber)
     userMessageDiv.innerHTML = `Hai finito il gioco, il punteggio è: ${clickedNumbers.length}`;
     for(let i = 0; i < gameMaxRange; i++) {
-        let allSel = document.querySelectorAll('.square')
-        allSel[i].removeEventListener('click', manageSquareClick)
+        let allSel = document.querySelectorAll('.square');
+        allSel[i].removeEventListener('click', manageSquareClick);
     }
-    for(let i = 0; i < 16; i++) {
-        if (bombs[i] === thisNumber ) {
-            // qui vorrei mostrare tutte le bombe 
+    for(let i = 0; i < gameMaxRange; i++) {
+        if(bombs.includes(i)) {
+            let allSel = document.querySelectorAll('.square');
+            allSel[i].classList.add('red');
         }
     }
 }
