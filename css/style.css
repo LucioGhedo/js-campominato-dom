@@ -9,12 +9,13 @@ img {
 }
 .logo {
     display: flex;
+    align-items: center;
 }
 header {
-    height: 50px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
-    margin: 50px;
+    align-items: center;
 }
 .square.easy {
     width: calc(100% / 10);
