@@ -1,36 +1,35 @@
 // html elements
-const mainGrid = document.getElementById('main-grid')
-const playButton = document.getElementById('play')
+const mainGrid = document.getElementById('main-grid');
+const playButton = document.getElementById('play');
 const clickedNumbers = [];
 const userMessageDiv = document.querySelector('#user-message');
 
 // array
 let bombs = [];
 
+// eventlistener playbutton
 playButton.addEventListener('click', 
 function() {
     // reset grigla
     mainGrid.innerHTML = '';
-    const userLevel = document.getElementById('user-level').value
-    
+    // difficoltà presa da value
+    const userLevel = document.getElementById('user-level').value;
+    // genero bombe, genero griglia
     if (userLevel === 'easy') {
         gameMaxRange = 100;
-        bombs = generateBombs(16, 1, 100)
+        bombs = generateBombs(16, 1, 100);
         gamesContinue = true;
         createGrid(gameMaxRange, 'easy');
     } else if (userLevel === 'medium') {
         gameMaxRange = 81;
-        bombs = generateBombs(16, 1, gameMaxRange)
+        bombs = generateBombs(16, 1, gameMaxRange);
         gamesContinue = true;
         createGrid(gameMaxRange, 'medium');
     } else if (userLevel === 'crazy') {
         gameMaxRange = 49;
-        bombs = generateBombs(16, 1, gameMaxRange)
+        bombs = generateBombs(16, 1, gameMaxRange);
         gamesContinue = true;
         createGrid(gameMaxRange, 'crazy');
-    } else {
-        alert('refresh page e inserisci un numero valido')
-        gamesContinue = false;
     }
 }
 )
@@ -43,13 +42,12 @@ function() {
 function generateBombs(numOfElem, rangeMin, rangeMax) {
     let randomNumArray = [];
     while(randomNumArray.length < numOfElem) {
-        const randomNum = getRndInteger(rangeMin, rangeMax)
+        const randomNum = getRndInteger(rangeMin, rangeMax);
         if(!randomNumArray.includes(randomNum)) {
-            randomNumArray.push(randomNum)
+            randomNumArray.push(randomNum);
         }
     }
-    console.log(randomNumArray)
-    return randomNumArray
+    return randomNumArray;
 }
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min +1) ) + min;
@@ -63,19 +61,16 @@ function createGrid(gameMaxRange, userLevel) {
         newSquare.innerHTML = `<span>${i}</span>`;
         // Aggiungere la classe square
         newSquare.classList.add('square', userLevel);
-    
-        // Aggiungere cosa succede al click
-        
         // Appenderlo
         mainGrid.append(newSquare);
     }
     let newSquareF = document.querySelectorAll('.square')
     for(let i = 0; i < newSquareF.length; i++) {
-        let squares = newSquareF[i]
+        let squares = newSquareF[i];
         if (!bombs.includes(manageSquareClick)) {
             squares.addEventListener('click', manageSquareClick);
         } else if (bombs.includes(manageSquareClick)) {
-            alert('hai perso')
+            alert('hai perso');
         }
     }
     
@@ -87,7 +82,7 @@ function manageSquareClick() {
     const thisNumber = parseInt(this.querySelector('span').innerHTML);
     
     if(bombs.includes(thisNumber)) {
-        endGame()
+        endGame();
         this.classList.add('red');
         document.getElementById('main-grid').removeEventListener('click', manageSquareClick)
     } else {
@@ -101,7 +96,7 @@ function manageSquareClick() {
     // Se l'utente ha cliccato su tutti i numeri
     // Scrivo il messaggio di fine gioco
     if(clickedNumbers.length === gameMaxRange - 16) {
-        endGame()
+        endGame();
     }
 
     // Quando ho finito le mia operazioni la cella non è più cliccabile
