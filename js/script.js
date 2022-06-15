@@ -69,8 +69,6 @@ function createGrid(gameMaxRange, userLevel) {
         let squares = newSquareF[i];
         if (!bombs.includes(manageSquareClick)) {
             squares.addEventListener('click', manageSquareClick);
-        } else if (bombs.includes(manageSquareClick)) {
-            alert('hai perso');
         }
     }
     
@@ -103,9 +101,16 @@ function manageSquareClick() {
     this.style.pointerEvents = 'none';
 }
 function endGame() {
+    const thisNumber = document.getElementsByClassName('square').innerHTML;
+    console.log('thisn',thisNumber)
     userMessageDiv.innerHTML = `Hai finito il gioco, il punteggio è: ${clickedNumbers.length}`;
     for(let i = 0; i < gameMaxRange; i++) {
         let allSel = document.querySelectorAll('.square')
         allSel[i].removeEventListener('click', manageSquareClick)
+    }
+    for(let i = 0; i < 16; i++) {
+        if (bombs[i] === thisNumber ) {
+            // qui vorrei mostrare tutte le bombe 
+        }
     }
 }
