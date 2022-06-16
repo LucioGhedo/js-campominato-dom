@@ -18,20 +18,18 @@ function() {
     // genero bombe, genero griglia
     if (userLevel === 'easy') {
         gameMaxRange = 100;
-        bombs = generateBombs(16, 1, 100);
         gamesContinue = true;
         createGrid(gameMaxRange, 'easy');
     } else if (userLevel === 'medium') {
         gameMaxRange = 81;
-        bombs = generateBombs(16, 1, gameMaxRange);
         gamesContinue = true;
         createGrid(gameMaxRange, 'medium');
     } else if (userLevel === 'crazy') {
         gameMaxRange = 49;
-        bombs = generateBombs(16, 1, gameMaxRange);
         gamesContinue = true;
         createGrid(gameMaxRange, 'crazy');
     }
+    bombs = generateBombs(16, 1, gameMaxRange);
 }
 )
 
